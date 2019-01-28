@@ -20,9 +20,13 @@ class Counter extends Component {
     this.props.incrementIfOdd();
   };
 
-  incrementAsync = () => {
+  incrementAsync = e => {
     // Stretch Problem: Implement an increment function that
     // increments after waiting for one second
+    e.preventDefault();
+    setTimeout(() => {
+      this.props.increment();
+    }, 1000);
   };
 
   render() {
@@ -37,9 +41,7 @@ class Counter extends Component {
         {/* Uncomment these button tags if you got
                 around to implementing the extra credit functions */}
         <button onClick={e => this.incrementIfOdd(e)}>Increment if odd</button>
-        {/* <button onClick={this.incrementAsync}>
-                    Increment async
-                </button>  */}
+        <button onClick={e => this.incrementAsync(e)}>Increment async</button>
       </p>
     );
   }

@@ -21,6 +21,7 @@ export default (state = initialState, action) => {
       } else {
         return state;
       }
+
     default:
       return state;
   }
