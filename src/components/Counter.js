@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { increment, decrement } from "../actions";
+import { increment, decrement, incrementIfOdd } from "../actions";
 
 class Counter extends Component {
   handleIncrement = e => {
@@ -13,9 +13,11 @@ class Counter extends Component {
     this.props.decrement();
   };
 
-  incrementIfOdd = () => {
+  incrementIfOdd = e => {
     // Stretch Problem: Implement an increment function that
     // only increments if the counter value is odd
+    e.preventDefault();
+    this.props.incrementIfOdd();
   };
 
   incrementAsync = () => {
@@ -34,10 +36,8 @@ class Counter extends Component {
         <button onClick={e => this.handleDecrement(e)}>-</button>
         {/* Uncomment these button tags if you got
                 around to implementing the extra credit functions */}
-        {/* <button onClick={this.incrementIfOdd}>
-                    Increment if odd
-                </button>
-                <button onClick={this.incrementAsync}>
+        <button onClick={e => this.incrementIfOdd(e)}>Increment if odd</button>
+        {/* <button onClick={this.incrementAsync}>
                     Increment async
                 </button>  */}
       </p>
@@ -64,5 +64,5 @@ const mapStateToProps = state => {
 // makes itself known to this component.
 export default connect(
   mapStateToProps,
-  { increment, decrement }
+  { increment, decrement, incrementIfOdd }
 )(Counter);

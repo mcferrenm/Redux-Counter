@@ -1,5 +1,6 @@
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
+export const INCREMENT_IF_ODD = "INCREMENT_IF_ODD";
 
 // Our action creators will return
 // an action packet that our reducer will
@@ -18,5 +19,11 @@ export const increment = () => {
 export const decrement = () => {
   return {
     type: DECREMENT
+  };
+};
+
+export const incrementIfOdd = () => {
+  return {
+    type: INCREMENT_IF_ODD
   };
 };
